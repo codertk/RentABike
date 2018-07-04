@@ -22,7 +22,9 @@ namespace RentABike.Controllers
             var bike = new Bike() {Name = "ThunderBird 350"};
             //return View(bike);
 
-            return Content("Hello World");
+            //return Content("Hello World");
+
+            return HttpNotFound();
 
 
         }
