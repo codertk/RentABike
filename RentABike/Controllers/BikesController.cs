@@ -20,13 +20,14 @@ namespace RentABike.Controllers
         public ActionResult Random()
         {
             var bike = new Bike() {Name = "ThunderBird 350"};
-            //return View(bike);
-
+            return View(bike);
             //return Content("Hello World");
+            //return HttpNotFound();
+        }
 
-            return HttpNotFound();
-
-
+        public ActionResult Edit(int id)
+        {
+            return Content("id =" + id);
         }
 	}
 }
