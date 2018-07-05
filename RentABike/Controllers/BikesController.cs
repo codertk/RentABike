@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using RentABike.Models;
+using RentABike.ViewModel;
 
 namespace RentABike.Controllers
 {
@@ -13,14 +15,50 @@ namespace RentABike.Controllers
         // GET: /Bikes/
         public ActionResult Index()
         {
-            return View();
+            var bikes = GetBikes();
+            return View(bikes);
         }
+
+        public IEnumerable<Bike> GetBikes()
+        {
+            return new List<Bike>
+            {
+                new Bike{Id =1,Name = "ThunderBird 350"},
+                new Bike{ Id = 2,Name = "Bajaj Pulsar RS200 "},
+                new Bike{Id=3,Name = "Royal Enfield Classic 350 "},
+                new Bike{Id=4,Name = "Honda Activa"}
+            };
+        }
+
+
+
+        public ActionResult Details(int BikeId)
+        {
+            var bike = GetBikes().SingleOrDefault(c => c.Id == BikeId);
+            return View(bike);
+        }
+
 
         // GET: /Bikes/Random
         public ActionResult Random()
         {
-            var bike = new Bike() {Name = "ThunderBird 350"};
-            return View(bike);
+            var bikes = new Bike() { Name = "ThunderBird 350" };
+
+            var customers = new List<Customer>
+            {
+                new Customer{Name = "ThilaK"},
+                new Customer{Name = "Kiruba"}
+
+            };
+
+
+            var ViewModel = new RandomMovieViewModel
+            {
+                Bikes = bikes,
+                Customers = customers
+            };
+
+            return View(ViewModel);
             //return Content("Hello World");
             //return HttpNotFound();
         }
@@ -29,5 +67,5 @@ namespace RentABike.Controllers
         {
             return Content("id =" + id);
         }
-	}
+    }
 }
