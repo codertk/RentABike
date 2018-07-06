@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201807061441542_Update_MemberShipType_Table.Designer.cs">
       <DependentUpon>201807061441542_Update_MemberShipType_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807061521135_AddColumn_Customer_DateOfBirth.cs" />
+    <Compile Include="Migrations\201807061521135_AddColumn_Customer_DateOfBirth.Designer.cs">
+      <DependentUpon>201807061521135_AddColumn_Customer_DateOfBirth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bike.cs" />
@@ -290,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807061441542_Update_MemberShipType_Table.resx">
       <DependentUpon>201807061441542_Update_MemberShipType_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807061521135_AddColumn_Customer_DateOfBirth.resx">
+      <DependentUpon>201807061521135_AddColumn_Customer_DateOfBirth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
