@@ -181,6 +181,18 @@
     <Compile Include="Migrations\201807060417532_InsertValueForMembershipType.Designer.cs">
       <DependentUpon>201807060417532_InsertValueForMembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807061148167_DataAnnotation-CustomerName.cs" />
+    <Compile Include="Migrations\201807061148167_DataAnnotation-CustomerName.Designer.cs">
+      <DependentUpon>201807061148167_DataAnnotation-CustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807061439169_AddColumninMemberShipType.cs" />
+    <Compile Include="Migrations\201807061439169_AddColumninMemberShipType.Designer.cs">
+      <DependentUpon>201807061439169_AddColumninMemberShipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807061441542_Update_MemberShipType_Table.cs" />
+    <Compile Include="Migrations\201807061441542_Update_MemberShipType_Table.Designer.cs">
+      <DependentUpon>201807061441542_Update_MemberShipType_Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bike.cs" />
@@ -269,6 +281,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807060417532_InsertValueForMembershipType.resx">
       <DependentUpon>201807060417532_InsertValueForMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807061148167_DataAnnotation-CustomerName.resx">
+      <DependentUpon>201807061148167_DataAnnotation-CustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807061439169_AddColumninMemberShipType.resx">
+      <DependentUpon>201807061439169_AddColumninMemberShipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807061441542_Update_MemberShipType_Table.resx">
+      <DependentUpon>201807061441542_Update_MemberShipType_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
