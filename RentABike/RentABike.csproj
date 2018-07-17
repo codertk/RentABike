@@ -201,6 +201,10 @@
     <Compile Include="Migrations\201807170529269_BikeDetailed-Information.Designer.cs">
       <DependentUpon>201807170529269_BikeDetailed-Information.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807170551038_Insert-CubicCapacity.cs" />
+    <Compile Include="Migrations\201807170551038_Insert-CubicCapacity.Designer.cs">
+      <DependentUpon>201807170551038_Insert-CubicCapacity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bike.cs" />
@@ -305,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807170529269_BikeDetailed-Information.resx">
       <DependentUpon>201807170529269_BikeDetailed-Information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807170551038_Insert-CubicCapacity.resx">
+      <DependentUpon>201807170551038_Insert-CubicCapacity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
