@@ -9,15 +9,19 @@ namespace RentABike.Models
     public class Customer
     {
         public int Id { get; set; }
+
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+
         [Display(Name = "Date Of Birth")]
         public DateTime? DateOfBirth { get; set; }
+
         public bool IsSubscibedToNewsLetter { get; set; }
 
-        [Display(Name = "Memebership Type")]
         public MembershipType MembershipType { get; set; }
+
+        [Display(Name = "Memebership Type")]
         public byte MembershipTypeId { get; set; }
 
     }

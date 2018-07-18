@@ -8,7 +8,7 @@ namespace RentABike.ViewModel
 {
     public class CustomerViewModel
     {
-        public Customer Customer { get; set; }
+        public Customer Customers { get; set; }
         public IEnumerable<MembershipType> MembershipTypes { get; set; }
     }
 }

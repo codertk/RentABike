@@ -26,10 +26,13 @@ else
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(@customers.Name, "Details", "Customers", new { Id = customers.Id }, null)
+                        @Html.ActionLink(@customers.Name, "Edit", "Customers", new { Id = customers.Id }, null)
                     </td>
                     <td>
                         @customers.MembershipType.Name
+                    </td>
+                    <td>
+                        @Html.ActionLink("Info", "Details", "Customers", new { Id = customers.Id }, null)
                     </td>
                 </tr>
             }
