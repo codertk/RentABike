@@ -4,12 +4,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Customer Detail's</h2>
-
-
-<p> @Model.Name</p>
-<p>@Model.MembershipType.Name</p>
-@if (Model.DateOfBirth.HasValue)
-{
-    <p>@Model.DateOfBirth.Value.ToShortDateString()</p>
+<h3>Customer Detail's</h3>
+@{
+    var IsDOB = Model.DateOfBirth.HasValue ? "" : "display:none";
 }
+<h1>@Model.Name</h1>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+
+            <th style=@IsDOB>
+                Date Od Birth
+            </th>
+            <th>
+                Membership Type
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style=@IsDOB>
+                @if (Model.DateOfBirth.HasValue)
+                {
+                    @Model.DateOfBirth.Value.ToShortDateString()
+                }
+
+            </td>
+            <td>
+                @Model.MembershipType.Name
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
