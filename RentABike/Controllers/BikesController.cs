@@ -6,16 +6,30 @@ using System.Web.Configuration;
 using System.Web.Mvc;
 using RentABike.Models;
 using RentABike.ViewModel;
+using System.Data.Entity;
 
 namespace RentABike.Controllers
 {
     public class BikesController : Controller
     {
+
+        public ApplicationDbContext _Context;
+
+        public BikesController()
+        {
+            _Context=new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _Context.Dispose();
+        }
+
         //
         // GET: /Bikes/
         public ActionResult Index()
         {
-            var bikes = GetBikes();
+            var bikes = _Context.Bikes.Include(c => c.CubicCapacity).ToList();
             return View(bikes);
         }
 
@@ -31,7 +45,15 @@ namespace RentABike.Controllers
         }
 
 
+        public ActionResult Details(int BikeId)
+        {
+            var bike = _Context.Bikes.Include(c=> c.CubicCapacity).SingleOrDefault(c => c.Id == BikeId);
 
+            return View(bike);
+        }
+
+
+         /*
         public ActionResult Details(int BikeId)
         {
             var bike = GetBikes().SingleOrDefault(c => c.Id == BikeId);
@@ -62,10 +84,6 @@ namespace RentABike.Controllers
             //return Content("Hello World");
             //return HttpNotFound();
         }
-
-        public ActionResult Edit(int id)
-        {
-            return Content("id =" + id);
-        }
+        */
     }
 }

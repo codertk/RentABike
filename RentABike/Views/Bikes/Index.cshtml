@@ -10,7 +10,13 @@
     <thead>
         <tr>
             <th>
-                Bike
+                Name
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                CC
             </th>
         </tr>
     </thead>
@@ -21,7 +27,15 @@
                 <td>
                     @Html.ActionLink(@bike.Name, "Details", "Bikes", new { BikeId = bike.Id }, null)
                 </td>
+                <td>
+                    @bike.Model.ToShortDateString()
+                    @*.ToString("{0:MMM-yyyy}")*@
+                </td>
+                <td>
+                    @bike.CubicCapacity.CC
+                </td>
             </tr>
+            
         }
     </tbody>
 </table>
