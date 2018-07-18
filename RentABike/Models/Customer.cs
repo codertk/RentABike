@@ -12,9 +12,11 @@ namespace RentABike.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-
+        [Display(Name = "Date Of Birth")]
         public DateTime? DateOfBirth { get; set; }
         public bool IsSubscibedToNewsLetter { get; set; }
+
+        [Display(Name = "Memebership Type")]
         public MembershipType MembershipType { get; set; }
         public byte MembershipTypeId { get; set; }
 

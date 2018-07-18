@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using RentABike.Models;
+using RentABike.ViewModel;
 
 namespace RentABike.Controllers
 {
@@ -21,6 +22,17 @@ namespace RentABike.Controllers
         protected override void Dispose(bool disposing)
         {
            _context.Dispose();
+        }
+
+        public ActionResult CustomerForm()
+        {
+            var memberShipTypes = _context.MembershipTypes.ToList();
+
+            var viewModel = new CustomerViewModel
+            {
+                MembershipTypes = memberShipTypes
+            };
+            return View(viewModel);
         }
 
         //
