@@ -10,5 +10,6 @@ namespace RentABike.ViewModel
     {
         public Customer Customers { get; set; }
         public IEnumerable<MembershipType> MembershipTypes { get; set; }
+        public string PageTitle { get; set; }
     }
 }

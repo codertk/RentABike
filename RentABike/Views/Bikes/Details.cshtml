@@ -19,7 +19,9 @@
             <th>
                 Date Purchased
             </th>
-
+            <th>
+                No of Bikes
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +35,9 @@
             </td>
             <td>
                 @Model.DateOfPurchase.ToShortDateString()
+            </td>
+            <td>
+                @Model.NumberOfBikes
             </td>
 
         </tr>

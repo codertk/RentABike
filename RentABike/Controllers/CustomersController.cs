@@ -30,7 +30,8 @@ namespace RentABike.Controllers
 
             var viewModel = new CustomerViewModel
             {
-                MembershipTypes = memberShipTypes
+                MembershipTypes = memberShipTypes,
+                PageTitle = "New Customer"
             };
             return View(viewModel);
         }
@@ -38,6 +39,18 @@ namespace RentABike.Controllers
         [HttpPost]
         public ActionResult SaveCustomer(Customer Customers)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerViewModel
+                {
+                    Customers = Customers,
+                    MembershipTypes = _context.MembershipTypes.ToList(),
+                    PageTitle = "Edit Customer"
+
+                };
+
+                return View("CustomerForm", viewModel);
+            }
             if (Customers.Id == 0)
             {
                 _context.Customers.Add(Customers);
@@ -73,6 +86,26 @@ namespace RentABike.Controllers
             return View(customer);
         }
 
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            //Need to redirect to Customer Form, But it's using ViewModel
+
+            var viewModel = new CustomerViewModel
+            {
+                Customers = customer,
+                MembershipTypes = _context.MembershipTypes.ToList(),
+                PageTitle = "Edit Customer"
+            };
+
+            return View("CustomerForm", viewModel);
+        }
+
         /*
        private IEnumerable<Customer> GetCustomers()
        {
@@ -86,22 +119,5 @@ namespace RentABike.Controllers
        }
           
          */
-        public ActionResult Edit(int id)
-        {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
-
-            if (customer == null)
-                return HttpNotFound();
-
-            //Need to redirect to Customer Form, But it's using ViewModel
-
-            var viewModel = new CustomerViewModel
-            {
-                Customers = customer,
-                MembershipTypes = _context.MembershipTypes.ToList()
-            };
-
-            return View("CustomerForm", viewModel);
-        }
     }
 }

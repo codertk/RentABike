@@ -5,7 +5,7 @@
 }
 
 <h2>Bikes</h2>
-
+@Html.ActionLink("Add Bike","BikeForm","Bikes",new {@class="btn btn-primary"})
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -25,7 +25,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(@bike.Name, "Details", "Bikes", new { BikeId = bike.Id }, null)
+                    @Html.ActionLink(@bike.Name,"Edit", "Bikes", new { BikeId = bike.Id }, null)
                 </td>
                 <td>
                     @bike.Model.ToShortDateString()
@@ -33,6 +33,10 @@
                 </td>
                 <td>
                     @bike.CubicCapacity.CC
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Info", "Details", "Bikes", new { BikeId = bike.Id }, null)
                 </td>
             </tr>
             

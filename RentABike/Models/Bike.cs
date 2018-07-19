@@ -13,11 +13,15 @@ namespace RentABike.Models
         public string Name { get; set; }
 
         public DateTime Model { get; set; }
+
+        [Display(Name = "Date Of Purchase")]
         public DateTime DateOfPurchase { get; set; }
+
+        [Display(Name = "Number Of Bikes")]
         public int NumberOfBikes { get; set; }
 
         public CubicCapacity CubicCapacity { get; set; }
-
+        [Display(Name = "Bike CC")]
         public int CubicCapacityId { get; set; }
     }
 }
