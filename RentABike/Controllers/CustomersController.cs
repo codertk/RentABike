@@ -30,6 +30,7 @@ namespace RentABike.Controllers
 
             var viewModel = new CustomerViewModel
             {
+                Customers = new Customer(),
                 MembershipTypes = memberShipTypes,
                 PageTitle = "New Customer"
             };

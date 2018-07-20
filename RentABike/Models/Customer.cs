@@ -15,6 +15,7 @@ namespace RentABike.Models
         public string Name { get; set; }
 
         [Display(Name = "Date Of Birth")]
+        [Min18years_Membership]
         public DateTime? DateOfBirth { get; set; }
 
         public bool IsSubscibedToNewsLetter { get; set; }
