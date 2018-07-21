@@ -38,6 +38,7 @@ namespace RentABike.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveCustomer(Customer Customers)
         {
             if (!ModelState.IsValid)

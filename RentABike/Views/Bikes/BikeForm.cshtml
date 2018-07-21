@@ -1,0 +1,51 @@
+﻿@model RentABike.ViewModel.BikeViewModel
+@{
+    ViewBag.Title = @Model.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h3>@Model.PageTitle</h3>
+
+@using (Html.BeginForm("SaveBike", "Bikes"))
+{
+    @Html.ValidationSummary(true, "Kindly Fix Below Validation,")
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bikes.Name)
+        @Html.TextBoxFor(m => m.Bikes.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Bikes.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bikes.Model)
+        @Html.TextBoxFor(m => m.Bikes.Model,"{0:MMM-yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Bikes.Model)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bikes.CubicCapacityId)
+        @Html.DropDownListFor(m => m.Bikes.CubicCapacityId, new SelectList(Model.CubicCapacities, "id", "CC"), " Select CC", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Bikes.CubicCapacityId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bikes.DateOfPurchase)
+        @Html.TextBoxFor(m => m.Bikes.DateOfPurchase, "{0:d MMM yyyy}",new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Bikes.DateOfPurchase)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bikes.NumberOfBikes)
+        @Html.TextBoxFor(m => m.Bikes.NumberOfBikes, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Bikes.NumberOfBikes)
+    </div>
+    @Html.HiddenFor(m=>m.Bikes.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Back","Index","Bikes",new{@class="btn btn-warning"})
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
