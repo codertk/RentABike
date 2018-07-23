@@ -31,8 +31,7 @@ namespace RentABike.Controllers
             var viewModel = new CustomerViewModel
             {
                 Customers = new Customer(),
-                MembershipTypes = memberShipTypes,
-                PageTitle = "New Customer"
+                MembershipTypes = memberShipTypes
             };
             return View(viewModel);
         }
@@ -46,8 +45,7 @@ namespace RentABike.Controllers
                 var viewModel = new CustomerViewModel
                 {
                     Customers = Customers,
-                    MembershipTypes = _context.MembershipTypes.ToList(),
-                    PageTitle = "Edit Customer"
+                    MembershipTypes = _context.MembershipTypes.ToList()
 
                 };
 
@@ -101,8 +99,7 @@ namespace RentABike.Controllers
             var viewModel = new CustomerViewModel
             {
                 Customers = customer,
-                MembershipTypes = _context.MembershipTypes.ToList(),
-                PageTitle = "Edit Customer"
+                MembershipTypes = _context.MembershipTypes.ToList()
             };
 
             return View("CustomerForm", viewModel);

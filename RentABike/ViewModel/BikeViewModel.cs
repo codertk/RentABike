@@ -12,6 +12,17 @@ namespace RentABike.ViewModel
 
         public Bike Bikes { get; set; }
 
-        public string PageTitle { get; set; }
+       // public string PageTitle { get; set; }
+
+        public string PageTitle
+        {
+            get
+            {
+                if (Bikes != null && Bikes.Id != 0)
+                    return "Edit Bike";
+                else
+                    return "New Bike";
+            }
+        }
     }
 }

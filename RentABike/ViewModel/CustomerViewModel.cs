@@ -10,18 +10,20 @@ namespace RentABike.ViewModel
     {
         public Customer Customers { get; set; }
         public IEnumerable<MembershipType> MembershipTypes { get; set; }
-        public string PageTitle { get; set; }
+        //public string PageTitle { get; set; }
 
-        /*
-         *public string title
-         * {
-         * get
-         * {
-         * If(movie!=null && movie.id!=0)
-         * return "Edit Movie";
-         * Else
-         * return "New Movie";
-                 */
+        public string PageTitle
+        {
+            get
+            {
+                if(Customers != null && Customers.Id != 0)
+                return "Edit Customer";
+                else
+                return "New Customer";
+            }
+        }
+
+
 
 
         /*

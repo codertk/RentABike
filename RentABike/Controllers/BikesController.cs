@@ -39,8 +39,7 @@ namespace RentABike.Controllers
             var viewModel = new BikeViewModel
             {
                 Bikes = new Bike(),
-                CubicCapacities = cubiccapsacity,
-                PageTitle = "New Bike"
+                CubicCapacities = cubiccapsacity
             };
             return View(viewModel);
         }
@@ -82,8 +81,7 @@ namespace RentABike.Controllers
             var BikeVM = new BikeViewModel
             {
                 Bikes = BikeInfo,
-                CubicCapacities = _Context.CubicCapacities.ToList(),
-                PageTitle = "Edit Bike"
+                CubicCapacities = _Context.CubicCapacities.ToList()
             };
             return View("BikeForm", BikeVM);
         }
