@@ -1,26 +1,130 @@
 ﻿@using Microsoft.Ajax.Utilities
-@model IEnumerable<RentABike.Models.Customer>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Customer's</h2>
-@Html.ActionLink("Add Customer", "CustomerForm", "Customers",null,new {@class="btn btn-primary"})
-@if (!Model.Any())
+@Html.ActionLink("Add Customer", "CustomerForm", "Customers", null, new { @class = "btn btn-primary" })
+
+
+<table id="Table_Customer" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Membership Type</th>
+            <th>Info</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+</table>
+
+@section scripts
 {
-    <p>Currently We Don't Hvae Customer's</p>
+    <script>
+
+        $(document).ready(function () {
+
+            var Customer_Data_Table = $("#Table_Customer").DataTable({
+                ajax: {
+                    url: "/api/Customers",
+                    dataSrc: ""
+                },
+                columns:
+                    [
+                        {
+                            data: "name",
+                            render: function (data, type, customer) {
+                                return "<a href='/customer/edit/" + customer.id + "'>" + customer.name + "</a>";
+                            }
+                        },
+                        {
+                            data: "membershipType.name"
+                        },
+                        {
+                            data: "id",
+                            render: function (data) {
+                                return "<a href='/Customers/Details/" + data + "'> INFO </a>";
+                            }
+                        },
+                        {
+                            data: "id",
+                            render: function (data) {
+                                return "<button data-customer-id=" + data + " class='btn-link js-delete'> DELETE </button>";
+                            }
+                        }
+                    ]
+            });
+
+            $("#Table_Customer").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you Sure you want to DELETE ?",
+                    function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/API/Customers/" + button.attr("data-customer-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    Customer_Data_Table.row(button.parents("tr")).remove().draw();
+                                    //Customer_Data_Table.row(button.parents("tr")).remove().draw();
+                                    //  console.log("Success");
+                                    //  console.log(id);
+                                }
+                            });
+                        }
+                    });
+            });
+
+        });
+
+        //function(result) {
+        //    if (result) {
+        //    }
+        //});
+
+        //$(document).ready(function () {
+        //    $("#Table_Customer .js-delete").click(function() {
+        //        if (confirm("Are you Sure you want to Delete ? ")) {
+        //            var button = $(this);
+        //           // var id = $(this).attr("data-customer-id");
+        //            $.ajax({
+        //                url:"/API/Customers/"+button.attr("data-customer-id"),
+        //                method:"DELETE",
+        //                success: function () {
+        //                    button.parents("tr").remove();
+        //                    //  console.log("Success");
+        //                    //  console.log(id);
+        //                }
+        //            });
+        //        }
+        //    });
+
+        //});
+    </script>
 }
-else
-{
-    <table class="table table-bordered table-hover">
-        <thead>
+
+@*
+
+    @Html.ActionLink("Add Customer", "CustomerForm", "Customers", null, new { @class = "btn btn-primary" })
+
+    @if (!Model.Any())
+    {
+        <p>Currently We Don't Hvae Customer's</p>
+    }
+    else
+    {
+        <table id="Table_Customer" class="table table-bordered table-hover">
+            <thead>
             <tr>
                 <th>Name</th>
                 <th>Membership Type</th>
+                <th>Info</th>
+                <th>Delete</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach (var customers in Model)
             {
                 <tr>
@@ -33,8 +137,13 @@ else
                     <td>
                         @Html.ActionLink("Info", "Details", "Customers", new { Id = customers.Id }, null)
                     </td>
+                    <td>
+                        <button data-customer-id="@customers.Id" class="btn-link js-delete"> Delete</button>
+                    </td>
                 </tr>
             }
-        </tbody>
-    </table>
-}
+            </tbody>
+        </table>
+    }
+
+*@

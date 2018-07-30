@@ -15,6 +15,7 @@ namespace RentABike.DTOs
         [StringLength(255)]
         public string Name { get; set; }
 
+        public MembershipTypeDTO MembershipType { get; set; }
        
         //[Min18years_Membership]
         public DateTime? DateOfBirth { get; set; }

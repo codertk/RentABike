@@ -26,39 +26,43 @@ namespace RentABike.Controllers.API
         [HttpGet]
         public IEnumerable<CustomerDTO> GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDTO>);
+            return _context.Customers
+                .Include(c=>c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer,CustomerDTO>);
         }
 
         // GET
         // API/Customers
         [HttpGet]
-        public CustomerDTO GetCustomers(int id)
+        public IHttpActionResult GetCustomers(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
 
-            return Mapper.Map<Customer,CustomerDTO>(customer);
+            return Ok(Mapper.Map<Customer,CustomerDTO>(customer));
         }
 
         //POST
         // API/Customers
         [HttpPost]
-        public CustomerDTO CreateCustomer(CustomerDTO customerDto)
+        public IHttpActionResult CreateCustomer(CustomerDTO customerDto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
+                // throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
 
             var customer = Mapper.Map<CustomerDTO, Customer>(customerDto);
             _context.Customers.Add(customer);
             _context.SaveChanges();
             customerDto.Id = customer.Id;
-            return customerDto;
+            return Created(new Uri(Request.RequestUri+"/"+customer.Id),customerDto );
         }
 
         //PUT

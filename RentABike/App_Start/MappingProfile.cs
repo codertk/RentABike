@@ -14,6 +14,7 @@ namespace RentABike.App_Start
         {
             Mapper.CreateMap<Customer, CustomerDTO>();
             Mapper.CreateMap<CustomerDTO, Customer>();
+            Mapper.CreateMap<MembershipType, MembershipTypeDTO>();
         }
     }
 }
