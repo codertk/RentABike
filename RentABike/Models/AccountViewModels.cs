@@ -7,6 +7,10 @@ namespace RentABike.Models
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Aadhar Number")]
+        public string AadharNumber { get; set; }
     }
 
     public class ManageUserViewModel
@@ -45,6 +49,10 @@ namespace RentABike.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Aadhar Number")]
+        public string AadharNumber { get; set; }
+
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }

@@ -28,9 +28,9 @@ namespace RentABike
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "310513909511222",
+               appSecret: "829eb0144dabf5b01872ba1b5e2d7d83");
 
             //app.UseGoogleAuthentication();
         }

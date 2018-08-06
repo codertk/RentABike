@@ -30,9 +30,11 @@ namespace RentABike.Controllers
         public ActionResult Index()
         {
             var bikes = _Context.Bikes.Include(c => c.CubicCapacity).ToList();
-            return View(bikes);
+            if (User.IsInRole(RoleName.CanManageBikes))
+                return View("IndexAdmin", bikes);
+            return View("IndexUser",bikes);
         }
-
+        [Authorize(Roles = RoleName.CanManageBikes)]
         public ActionResult BikeForm()
         {
             var cubiccapsacity = _Context.CubicCapacities.ToList();
